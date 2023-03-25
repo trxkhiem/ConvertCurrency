@@ -1,7 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
+import AUCountryCurrency from './components/AUCurrencyItem';
+import CurrencyItem from './components/CurrencyItem';
+import DisplayModal from './components/DisplayModal';
+import HistoricalExchangeRate from './components/HistoricalExchangeRate';
+
+
 
 export default function App() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
+  };
   return (
     <SafeAreaView style={styles.container}>
       {/* // Header */}
@@ -11,22 +26,12 @@ export default function App() {
 
       {/* Body View */}
       <View >
-
-      {/* AUD container view   */}
-      <View style={styles.currencyItem}>
-        {/* current view */}
-        <View>
-          <Text>AUD</Text>
-        </View>
-
-        {/* value view */}
-        <View>
-          <Text>$1,000.00</Text>
-        </View>
-
-      </View>
-
-      
+        {/* AUD container view   */}
+        <AUCountryCurrency />
+        <TouchableOpacity onPress={handleOpenModal}>
+            <CurrencyItem />
+        </TouchableOpacity>
+        <DisplayModal isVisible={isModalVisible} onClose={handleCloseModal} component={<HistoricalExchangeRate /> } />
       </View>
     </SafeAreaView>
   );
@@ -59,24 +64,5 @@ const styles = StyleSheet.create({
     color: '#333333',
   },
 
-  viewBody: {
-    
-  },
 
-  currencyItem: {
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    marginVertical: 40,
-    marginHorizontal: 16,
-    paddingHorizontal: 20,
-    paddingVertical: 24,
-    backgroundColor: '#ffffff',
-    borderRadius: 10,
-    elevation: 5, // Set the elevation to 5
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-  }
 });
