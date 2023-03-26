@@ -4,22 +4,22 @@ import CountryFlag from './CountryFlag';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 
-const CurrencyItem = ({}) => {
+const CurrencyItem = ({item}) => {
     return (
         <View style={styles.currencyItem}>
         {/* current view */}
         <View style={styles.leftView}>
-          <CountryFlag countryCode="CAD" size={50} />
-          <Text style={{ fontSize: 16, fontWeight: "bold"}}>CAD</Text>
+          <CountryFlag countryCode={item.countryCode} size={50} />
+          <Text style={{ fontSize: 16, fontWeight: "bold"}}>{item.countryCode}</Text>
          
         </View>
 
         {/* value view */}
         <View style={styles.rightView}>
           <View style={styles.viewText}> 
-            <Text style={styles.valueText}>$ 1,000.00</Text>
+            <Text style={styles.valueText}>{item.currencyUnit} 1,000.00</Text>
             <Text style={styles.subText}>
-                1 AUD = 0.9154 CAD
+                1 AUD = 0.9154 {item.countryCode}
             </Text>
           </View>
 
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
         marginTop: 4
     },
 
+     // to create a line
     line:{
         borderLeftWidth: 1, 
         marginRight: 0, 

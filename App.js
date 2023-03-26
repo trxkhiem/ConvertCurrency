@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, FlatList } from 'react-native';
 import AUCountryCurrency from './components/AUCurrencyItem';
 import CurrencyItem from './components/CurrencyItem';
 import DisplayModal from './components/DisplayModal';
 import HistoricalExchangeRate from './components/HistoricalExchangeRate';
-
+import {ITEMS} from './utils/Constants'
 
 
 export default function App() {
+  
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleOpenModal = () => {
@@ -17,6 +18,7 @@ export default function App() {
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
+
   return (
     <SafeAreaView style={styles.container}>
       {/* // Header */}
@@ -28,10 +30,16 @@ export default function App() {
       <View >
         {/* AUD container view   */}
         <AUCountryCurrency />
-        <TouchableOpacity onPress={handleOpenModal}>
+        {/* <TouchableOpacity onPress={handleOpenModal}>
             <CurrencyItem />
         </TouchableOpacity>
-        <DisplayModal isVisible={isModalVisible} onClose={handleCloseModal} component={<HistoricalExchangeRate /> } />
+        <DisplayModal isVisible={isModalVisible} onClose={handleCloseModal} component={<HistoricalExchangeRate /> } /> */}
+
+<FlatList
+          data={ITEMS}
+          renderItem={({ item }) => <CurrencyItem item={item} />}
+          keyExtractor={(item) => item.countryCode}
+        />
       </View>
     </SafeAreaView>
   );

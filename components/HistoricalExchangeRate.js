@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { LineChart } from 'react-native-chart-kit';
-
+import { Dimensions } from 'react-native';
 const HistoricalExchangeRate = () => {
   const [exchangeRates, setExchangeRates] = useState([]);
 

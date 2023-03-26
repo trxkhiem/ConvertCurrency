@@ -1,12 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import CountryFlag from './CountryFlag';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 
 const AUCountryCurrency = ({}) => {
+
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (value) => {
+    setInputValue(value);
+  };
     return (
         <View style={styles.currencyItem}>
+          
         {/* current view */}
         <View style={styles.leftView}>
           <CountryFlag countryCode="AUD" size={50} />
@@ -17,18 +24,18 @@ const AUCountryCurrency = ({}) => {
         {/* value view */}
         <View style={styles.rightView}>
           <View style={styles.viewText}> 
-            <Text style={styles.valueText}>$ 1,000.00</Text>
+            <Text style={styles.valueText}>$</Text>     
+            <TextInput
+              style={styles.valueText}
+              value={inputValue}
+              onChangeText={handleInputChange}
+              placeholder="1000.00"
+              keyboardType="numeric"
+            />
           </View>
+
           {/* empty box  */}
-          <View style={{ 
-            borderLeftWidth: 1, 
-            marginRight: 0, 
-            marginLeft: 10, 
-            borderColor: '#D3D3D3', 
-            height: '100%',
-            justifyContent:'center',
-            alignItems: 'center',
-            width: 50 }}>
+          <View style={styles.line}>
             <EntypoIcons name="calculator" size={30} color="#D3D3D3" />
           </View>
 
@@ -76,14 +83,28 @@ const styles = StyleSheet.create({
   
     viewText: {
       justifyContent: 'center',
+      flexDirection: 'row',
+      alignItems: 'center',
     },
   
     valueText:{
       textAlign: 'center',
       fontWeight: 'bold',
-      fontSize: 16
+      fontSize: 16,
+      marginHorizontal: 2
     },
   
+    // to create a line
+    line:{
+      borderLeftWidth: 1, 
+      marginRight: 0, 
+      marginLeft: 10, 
+      borderColor: '#D3D3D3', 
+      height: '100%',
+      justifyContent:'center',
+      alignItems: 'center',
+      width: 50
+    }
   });
   
 
