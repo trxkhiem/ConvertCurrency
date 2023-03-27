@@ -4,7 +4,7 @@ import CountryFlag from './CountryFlag';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 
-const CurrencyItem = ({item}) => {
+const CurrencyItem = ({item, value}) => {
     return (
         <View style={styles.currencyItem}>
         {/* current view */}
@@ -17,9 +17,9 @@ const CurrencyItem = ({item}) => {
         {/* value view */}
         <View style={styles.rightView}>
           <View style={styles.viewText}> 
-            <Text style={styles.valueText}>{item.currencyUnit} 1,000.00</Text>
+            <Text style={styles.valueText}>{item.currencyUnit} {(value * item.convertRate).toFixed(2)}</Text>
             <Text style={styles.subText}>
-                1 AUD = 0.9154 {item.countryCode}
+                1 AUD = {item.convertRate.toFixed(5)} {item.countryCode}
             </Text>
           </View>
 

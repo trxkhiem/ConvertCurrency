@@ -9,26 +9,26 @@ const CountryFlag = ({ countryCode, size }) => {
   let flagImagePath;
   switch (countryCode) {
     case 'USD':
-      flagImagePath = require('../assets/USD.png');
+      flagImagePath = require('../../assets/USD.png');
       break;
-    case 'GPB':
-      flagImagePath = require('../assets/GPB.png');
+    case 'SGD':
+      flagImagePath = require('../../assets/SGD.png');
       break;
     case 'CAD':
-      flagImagePath = require('../assets/CAD.png');
+      flagImagePath = require('../../assets/CAD.png');
       break;
     case 'EUR':
-      flagImagePath = require('../assets/EUR.png');
+      flagImagePath = require('../../assets/EUR.png');
       break;
     case 'AUD':
-      flagImagePath = require('../assets/AUD.png');
+      flagImagePath = require('../../assets/AUD.png');
       break;
-    case 'VND':
-      flagImagePath = require('../assets/VND.png');
+    case 'CHF':
+      flagImagePath = require('../../assets/CHF.png');
       break;
     // add more cases for other countries
     default:
-      flagImagePath = require('../assets/AUD.png');
+      flagImagePath = require('../../assets/AUD.png');
       break;
   }
   return (

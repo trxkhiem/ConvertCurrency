@@ -1,47 +1,57 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import CountryFlag from './CountryFlag';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 
-const AUCountryCurrency = ({}) => {
+const AUCountryCurrency = ({onValueChange}) => {
 
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (value) => {
     setInputValue(value);
   };
-    return (
-        <View style={styles.currencyItem}>
-          
-        {/* current view */}
-        <View style={styles.leftView}>
-          <CountryFlag countryCode="AUD" size={50} />
-          <Text style={{ fontSize: 16, fontWeight: "bold"}}>AUD</Text>
-          <EntypoIcons name="chevron-small-down" size={35} color="#D3D3D3" />
-        </View>
 
-        {/* value view */}
-        <View style={styles.rightView}>
-          <View style={styles.viewText}> 
-            <Text style={styles.valueText}>$</Text>     
-            <TextInput
-              style={styles.valueText}
-              value={inputValue}
-              onChangeText={handleInputChange}
-              placeholder="1000.00"
-              keyboardType="numeric"
-            />
-          </View>
+  const handlePress = () => {
+    onValueChange(inputValue);
+    
+    // Dismiss the keyboard
+    Keyboard.dismiss();
+  };
 
-          {/* empty box  */}
-          <View style={styles.line}>
-            <EntypoIcons name="calculator" size={30} color="#D3D3D3" />
-          </View>
+  return (
+    <View style={styles.currencyItem}>
+      
+    {/* current view */}
+    <View style={styles.leftView}>
+      <CountryFlag countryCode="AUD" size={50} />
+      <Text style={{ fontSize: 16, fontWeight: "bold"}}>AUD</Text>
+      <EntypoIcons name="chevron-small-down" size={35} color="#D3D3D3" />
+    </View>
 
-        </View>
+    {/* value view */}
+    <View style={styles.rightView}>
+      <View style={styles.viewText}> 
+        <Text style={styles.valueText}>$</Text>     
+        <TextInput
+          style={styles.valueText}
+          value={inputValue}
+          onChangeText={handleInputChange}
+          placeholder="1000.00"
+          keyboardType="numeric"
+        />
       </View>
-      );
+
+      {/* empty box  */}
+      <TouchableOpacity onPress={handlePress}>
+        <View style={styles.line}>
+          <EntypoIcons name="calculator" size={30} color="#D3D3D3" />
+        </View>
+      </TouchableOpacity>
+
+    </View>
+  </View>
+  );  
 };
 
 
