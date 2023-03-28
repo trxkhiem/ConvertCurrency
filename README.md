@@ -12,9 +12,7 @@ To get started with this project, follow these steps:
 
 - Install the dependencies by running npm install or yarn
 
-- Create a .env file in the project directory and add API key in the following format and connect to constant.js file:
-
-  ``` API_KEY=your-api-key-here ```
+- Enter your API key value in the constant.js file in the field 'API_KEY' :
 
 - Start the app using npm start or yarn start
 
