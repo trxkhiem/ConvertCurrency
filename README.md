@@ -23,6 +23,7 @@ This app has the following features:
 - User should be able to convert an amount from AUD to 5 other pre-defined target currencies.
 - The user can press a button and update the amount of AUD they want to convert.
 - As user changes the amount, the amounts in target currencies are updated.
+- Implement @react-native-async-storage/async-storage" to store cache data.
 
 
 ## Credits
