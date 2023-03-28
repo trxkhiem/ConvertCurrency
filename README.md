@@ -26,7 +26,6 @@ This app has the following features:
 - The user can press a button and update the amount of AUD they want to convert.
 - As user changes the amount, the amounts in target currencies are updated.
 
-## Screenshots
 
 ## Credits
 - [OpenExchange](https://openexchangerates.org/).
